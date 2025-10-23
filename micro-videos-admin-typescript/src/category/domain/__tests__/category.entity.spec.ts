@@ -90,20 +90,21 @@ describe('Category Unit Test', () => {
 
     describe('Category ID', () => {
         const arrange = [
-            {id : null},{id: undefined},{id: new Uuid() },
-        ]
-        test.each(arrange)('id = %j', ({category_id}) => {
+            { category_id: null },
+            { category_id: undefined },
+            { category_id: new Uuid() },
+        ];
+        test.each(arrange)("id = %j", ({ category_id }) => {
             const category = new Category({
                 name: "Movie",
-                category_id: category_id as any
-            })
+                category_id: category_id as any,
+            });
             expect(category.category_id).toBeInstanceOf(Uuid);
-            if (category_id instanceof  Uuid) {
-                expect(category.category_id).
-                toBe(category_id)
+            if (category_id instanceof Uuid) {
+                expect(category.category_id).toBe(category_id);
             }
-        })
-    })
+        });
+    });
 
     describe('update command', () => {
         test('should change name', () => {
@@ -151,7 +152,7 @@ describe('Category Validator', () => {
             expect(() =>
                 Category.create({
                     name: null
-                })).containsErrorMessages(
+                } as any)).containsErrorMessages(
                {
                     name: ["name should not be empty",
                         "name must be a string",
@@ -200,7 +201,7 @@ describe('Category Validator', () => {
     describe("changeName method", () => {
         it("should a invalid category using name property", () => {
             const category = Category.create({ name: "Movie" });
-            expect(() => category.changeName(null)).containsErrorMessages({
+            expect(() => category.changeName(null as any)).containsErrorMessages({
                 name: [
                     "name should not be empty",
                     "name must be a string",
