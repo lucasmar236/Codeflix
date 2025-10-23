@@ -33,7 +33,7 @@ expect.extend({
 });
 
 function assertContainsErrorsMessages(
-    expected: FieldsErrors,
+    expected: FieldsErrors | null,
     received: FieldsErrors
 ) {
     const isMatch = expect.objectContaining(received).asymmetricMatch(expected);
