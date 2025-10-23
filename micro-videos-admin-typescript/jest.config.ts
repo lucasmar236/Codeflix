@@ -37,7 +37,7 @@ const config: Config.InitialOptions = {
         },
     },
     testEnvironment: 'node',
-    //setupFilesAfterEnv: ['./core/shared/infra/testing/expect-helpers.ts'],
+    setupFilesAfterEnv: ['./shared/infra/testing/expect-helpers.ts'],
     coverageProvider: 'v8',
     clearMocks: true,
 };

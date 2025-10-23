@@ -2,29 +2,29 @@ import {IsBoolean, IsNotEmpty, IsOptional, IsString, MaxLength} from "class-vali
 import {Category} from "./category.entity";
 import {ClassValidatorFields} from "../../shared/domain/validators/class-validator-fields";
 
-class CategoryRules {
+export class CategoryRules {
     @MaxLength(255)
-    @IsString
-    @IsNotEmpty
+    @IsString()
+    @IsNotEmpty()
     name : string;
 
     @IsString()
     @IsOptional()
     description: string | null;
 
-    @IsBoolean
-    @IsNotEmpty
+    @IsBoolean()
+    @IsNotEmpty()
     is_active: boolean;
 
 
-    constructor({name, description, is_active}: Category ) {
-        Object.assign(this, {name, description, is_active});
+    constructor({ name, description, is_active }: Category) {
+        Object.assign(this, { name, description, is_active });
     }
 }
 
 export class CategoryValidator extends ClassValidatorFields<CategoryRules> {
-    validate(enitty: Category){
-        return super.validate(new CategoryRules(enitty))
+    validate(entity: Category){
+        return super.validate(new CategoryRules(entity))
     }
 }
 
