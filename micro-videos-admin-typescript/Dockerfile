@@ -1,6 +1,6 @@
 FROM node:20.5.1-slim
 
-USER NODE
+USER node
 
 WORKDIR /home/node/app
 
